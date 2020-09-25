@@ -1,0 +1,65 @@
+<h1>Recipes#new</h1>
+
+<%# 親のフォーム %>
+<%= form_with(model: @recipe, local: true) do |f| %>
+  <div class="click-upload">
+    <p>
+      クリックしてファイルをアップロード
+    </p>
+    <%= f.file_field :image, id:"item-image" %>
+  </div>
+
+  <%= f.label "料理名"%>
+  <%= f.text_field :title %>
+
+  <%= f.label "ポイント！"%>
+  <%= f.text_field :feature %>
+
+  <%= f.label "カテゴリー"%>
+  <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"categoey-select"}) %>
+
+  <%= f.label "日持ち"%>
+  <%= f.text_field :date %>
+
+  <%= f.label "調理時間の目安"%>
+  <%= f.text_field :cook_time %>
+  <!-- プルダウンに変える -->
+
+  <%= f.label "材料" %>
+
+<%# 子供を追加するボタン %>
+<!---->
+  <div class="links">
+    <%= link_to_add_association "材料を追加", f, :materials,
+    class: 'btn btn-success',
+    data: {
+    data_association_insertion_traversal: 'closest',
+    association_insertion_method: 'append' }
+    %>
+  </div>
+
+<%# 子供の追加要素へ飛ばす %>
+  <div class="materials">
+  <%= f.fields_for :materials do |form| %>
+    <%= render "material_fields", f: form %>
+    <!-- f: formとなっていなかったためformが渡せていなかった-->
+  <% end %>
+  </div>
+
+<%# CKエディター %>
+  <div class="cook">
+    <%= f.fields_for :cook do |form| %>
+      <div><%= form.cktext_area :body, class: "ck-editer" %></div>
+    <% end %>
+  </div>
+
+<%# フォームの送信ボタン %>
+  <div class="actions">
+    <%= f.submit "送信" %>
+  </div>
+<!--
+  <div class="row new--post__submit">
+      <%= f.submit "送信", class: "waves-effect waves-light btn" %>
+  </div>
+--> 
+<% end %>
