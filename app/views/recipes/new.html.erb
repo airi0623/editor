@@ -28,27 +28,21 @@
   <%= f.label "材料" %>
 
   <div id="btn-event">
-    <%# 子供を追加するボタン %>
-    <!--
-      **追加ボタンの上に追加される
-      <div class="links">
-        <%= link_to_add_association "子供を追加", f, :materials, id: 'add-btn' %>
-      </div>
-    data-association-insertion-node：は追加ボタンが押されたら、データをここに差し込む
-    data-association-insertion-method：はその追加分を、どこに差し込むか。（それが前なのか、後ろなのか。。。）
-    -->
     <div class="links">
       <%= link_to_add_association "材料を追加", f, :materials,
       class: 'btn btn-success',
       id: 'add-btn',
       data: {
-      data_association_insertion_traversal: 'closest',
-      association_insertion_method: 'after' }
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'}
+        # data-association-insertion-node： '#追加分の差し込み先'
+        # data-association-insertion-method：'差し込み先に対して上なのか下なのか...'
+        #'before'差し込み先の上 'after'差し込み先の下 'append'差し込み先の下 'prepend'差し込み先の上
       %>
     </div>
 
     <%# 子供の追加要素へ飛ばす %>
-    <div class="materials">
+    <div class="materials" id="detail-association-insertion-point">
     <%= f.fields_for :materials do |form| %>
       <%= render "material_fields", f: form %>
       <!-- f: formとなっていなかったためformが渡せていなかった-->
