@@ -2,12 +2,12 @@ class Thing < ActiveHash::Base
   self.data = [
     { id: 0, name: '材料を選択してください'},
     # 個
-    { id: 1, name: 'じゃがいも'},
-    { id: 2, name: '玉ねぎ'},
-    { id: 3, name: 'なすび' },
-    { id: 4, name: 'ピーマン' },
-    { id: 5, name: 'しいたけ' },
-    { id: 6, name: 'お好みのルー' },
+    { id: 1, name: 'じゃがいも', unit: "個"},
+    { id: 2, name: '玉ねぎ', unit: "test"},
+    { id: 3, name: 'なすび', unit: "ml" },
+    { id: 4, name: 'ピーマン', unit: "枚" },
+    { id: 5, name: 'しいたけ', unit: "個" },
+    { id: 6, name: 'お好みのルー', unit: "個" },
 
     # 本
     { id: 101, name: 'にんじん' },

@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    binding.pry
     if @recipe.save
       redirect_to root_path
       # format.html { redirect_to @recipe, notice: 'Post was successfully created.' }

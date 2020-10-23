@@ -1,15 +1,15 @@
-<div class="nested-fields">
+<div class="nested-fields" id="nested">
 
-  <%#= f.label "材料" %>
-  <%#= f.label "食材" %>
-  <%= f.collection_select(:thing_id, Thing.all, :id, :name, {}, {class:"select-box", id:"thing-select"}) %>
-  <%#= f.label "分量" %>
+
+  <% thing_options = Thing.order(:id).map { |c| [c.name, c.id, data: { unit: c.unit }] } %>
+  <%= f.select(:thing_id, thing_options, { prompt: "---"}, {class:"select-box", id:"thing-select"}) %>
+  <%#= f.collection_select(:thing_id, Thing.all, :id, :name, {}, {class:"select-box", id:"thing-select", data: {index:0} }) %>
+  <%#  さらに子供のデータもパスから持ってこれる %>
+  <%# thing_options = Thing.order(:id).map { |c| [c.name, c.id, data: { children_path: things_path(c) }] } %>
+  <%#= f.select(:thing_id, thing_options, { prompt: "---"}, {class:"input-area ingredients-thing-name col-md-3", id:"ingredient-thing-name"}) %>
+
   <%= f.text_field :amount, placeholder:"(例)1.5", class:"amount-box" %>
-  <%#= f.label "孫3" %>
-  <%#= f.collection_select(:active_id, Active.all, :id, :unit, {}, {class:"select-box", id:"unit-auto"}) %>
-  <span id='unit-auto' class="box"></span>
-
-  
+  <span id='unit-auto' class="box" >単位</span>
+  <%= %>
   <%= link_to_remove_association "材料を削除", f %>
-
 </div>
