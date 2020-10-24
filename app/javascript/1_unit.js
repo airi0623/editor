@@ -6,10 +6,10 @@ function material() {
   const imageElementNum = document.querySelectorAll('#image-box').length
   
   // 最初の一つの選択
-  const materialSelect = document.getElementById("thing-select");
-    const unit = document.getElementById("unit-auto");
-    materialSelect.addEventListener("change",function(e){
-      const materialId = materialSelect.value
+  const selectBox = document.getElementById("thing-select");
+  const unit = document.getElementById("unit-auto");
+    selectBox.addEventListener("change",function(e){
+      const materialId = selectBox.value
       if (materialId >= 1 && materialId <= 100){
         unit.innerHTML = "個";
       } else if (materialId >= 101 && materialId <= 200){ 
@@ -26,13 +26,20 @@ function material() {
         unit.innerHTML = "--";
       }
     });
-  for (let i = 0; i < 3; i++) {
+  //for (let i = 0; i < 3; i++) { なんのために必要かわからん
     // それ以降
+
+
+    
     add.addEventListener("click",function(e){
-      const materialSelect = document.getElementById("thing-select");
+      const selectBox = document.getElementById("thing-select");
       const unit = document.getElementById("unit-auto");
-      materialSelect.addEventListener("change",function(e){
-        const materialId = materialSelect.value
+      
+      selectBox.addEventListener("change",function(e){
+        // const selectB = document.getElementById("thing-select");
+        // const unit = document.getElementById("unit-auto");
+
+        const materialId = selectBox.value
         if (materialId >= 1 && materialId <= 100){
           unit.innerHTML = "個";
         } else if (materialId >= 101 && materialId <= 200){ 
@@ -50,7 +57,7 @@ function material() {
         }
       });
     });
-  }
+  //}
 };
 
 window.addEventListener("load", material); 

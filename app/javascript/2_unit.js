@@ -11,10 +11,10 @@ function material() {
     $("#add-btn").on('click', '.select-box', function(e) {
       console.log(e)
       // if (e.target.id() === 'p') {
-        const materialSelect = document.getElementById("thing-select");
+        const selectBox = document.getElementById("thing-select");
         const unit = document.getElementById("unit-auto");
-        materialSelect.addEventListener("change",function(){
-          const materialId = materialSelect.value
+        selectBox.addEventListener("change",function(){
+          const materialId = selectBox.value
           if (materialId >= 1 && materialId <= 100){
             unit.innerHTML = "個";
           } else if (materialId >= 101 && materialId <= 200){ 

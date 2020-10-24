@@ -1,5 +1,4 @@
 // 自動で単位取得
-// 直下以下にイベントきく
 function material() {
   
   const add = document.getElementById("add-btn"); //追加ボタン
@@ -16,19 +15,24 @@ function material() {
     });
     // それ以降
     
-  add.addEventListener("click",function(e){
-    const selectBox = document.getElementById("thing-select"); 
-    const unit = document.getElementById("unit-auto");
+    // const insertedItem = document.getElementById("nested"); 
+    //document.getElementById("add-space").addEventListener('cocoon:after-insert', function(e, insertedItem) {
+    //add.addEventListener("click",function(e){
+    $("#add-space").on('cocoon:after-insert', function(){
+      // const selectBox = document.getElementById("thing-select"); 
+      // const unit = document.getElementById("unit-auto");
 
-    selectBox.addEventListener("change",function (){
-      const dataUnit = selectBox.options[ selectBox.selectedIndex].getAttribute('data-unit');
-      unit.innerHTML = dataUnit;
+      // selectBox.addEventListener("change",function (e){
+      //   const dataUnit = selectBox.options[ selectBox.selectedIndex].getAttribute('data-unit');
+      //   unit.innerHTML = dataUnit;
       $("#thing-select").on('change',function(){
         //select = $("#thing-select option:selected").data("unit");
         console.log('cok');
       });
+
+      
     });
-  });
+
 };
 
 window.addEventListener("load", material); 

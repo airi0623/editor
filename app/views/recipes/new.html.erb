@@ -33,16 +33,19 @@
       class: 'btn btn-success',
       id: 'add-btn',
       data: {
+        data_association_insertion_traversal: 'closest',
         association_insertion_node: '#detail-association-insertion-point',
         association_insertion_method: 'after'}
         # data-association-insertion-node： '#追加分の差し込み先'
         # data-association-insertion-method：'差し込み先に対して上なのか下なのか...'
-        #'before'差し込み先の上 'after'差し込み先の下 'append'差し込み先の下 'prepend'差し込み先の上
+        #'before'差し込み先の上 'after'差し込み先の下 'append'差し込み先の下? 'prepend'差し込み先の上?
       %>
     </div>
+    
+  <div id="detail-association-insertion-point"></div>
 
     <%# 子供の追加要素へ飛ばす %>
-    <div class="materials" id="detail-association-insertion-point">
+    <div class="materials" id="add-space">
     <%= f.fields_for :materials do |form| %>
       <%= render "material_fields", f: form %>
       <!-- f: formとなっていなかったためformが渡せていなかった-->
@@ -61,9 +64,4 @@
   <div class="actions">
     <%= f.submit "送信" %>
   </div>
-<!--
-  <div class="row new--post__submit">
-      <%= f.submit "送信", class: "waves-effect waves-light btn" %>
-  </div>
---> 
 <% end %>

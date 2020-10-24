@@ -1,7 +1,8 @@
 <div class="nested-fields" id="nested">
 
   <% thing_options = Thing.order(:id).map { |c| [c.name, c.id, data: { unit: c.unit }] } %>
-  <%= f.select(:thing_id, thing_options, { prompt: "---"}, {class:"select-box", id:"thing-select"}) %>
+  <%= f.select(:thing_id, thing_options, { prompt: "---"}, {class:"select-box", id:"thing-select", data:{index:0}}) %>
+  
   <%#= f.collection_select(:thing_id, Thing.all, :id, :name, {}, {class:"select-box", id:"thing-select", data: {index:0} }) %>
   <%#  さらに子供のデータもパスから持ってこれる %>
   <%# thing_options = Thing.order(:id).map { |c| [c.name, c.id, data: { children_path: things_path(c) }] } %>
