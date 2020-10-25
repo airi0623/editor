@@ -1,5 +1,6 @@
-// 最初の一つとそのほかで分けてる
+// if文でunitの表示切り替え
 // 一番上にあるのがクリックのたびに定義される
+
 function material() {
   
   const add = document.getElementById("add-btn");

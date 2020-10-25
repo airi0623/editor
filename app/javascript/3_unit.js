@@ -1,3 +1,4 @@
+// if文でunitの表示切り替え
 // 親の中に入っている子要素全てに再定義を行う
 
 function material() {

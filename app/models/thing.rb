@@ -1,22 +1,21 @@
 class Thing < ActiveHash::Base
   self.data = [
-    { id: 0, name: '材料を選択してください'},
     # 個
-    { id: 1, name: 'じゃがいも', unit: "個"},
-    { id: 2, name: '玉ねぎ', unit: "test"},
-    { id: 3, name: 'なすび', unit: "ml" },
-    { id: 4, name: 'ピーマン', unit: "枚" },
-    { id: 5, name: 'しいたけ', unit: "個" },
-    { id: 6, name: 'お好みのルー', unit: "個" },
+    { id: 1, name: 'じゃがいも',spoon:"", unit: "個"},
+    { id: 2, name: '玉ねぎ', spoon:"大さじ",unit: "test"},
+    { id: 3, name: 'なすび', spoon:"大さじ",unit: "ml" },
+    { id: 4, name: 'ピーマン', spoon:"大さじ",unit: "枚" },
+    { id: 5, name: 'しいたけ', spoon:"大さじ",unit: "個" },
+    { id: 6, name: 'お好みのルー', spoon:"大さじ",unit: "個" },
 
     # 本
-    { id: 101, name: 'にんじん' },
-    { id: 102, name: 'ねぎ' },
-    { id: 103, name: '大根' },
+    { id: 101, name: 'にんじん', unit: "本" },
+    { id: 102, name: 'ねぎ', unit: "本" },
+    { id: 103, name: '大根', unit: "本" },
 
     # 束
-    { id: 201, name: 'ほうれん草' },
-    { id: 202, name: 'ニラ' },
+    { id: 201, name: 'ほうれん草' , unit: "束"},
+    { id: 202, name: 'ニラ', unit: "束" },
 
     # ml
     { id: 301, name: '水' },

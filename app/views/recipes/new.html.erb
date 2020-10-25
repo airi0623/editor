@@ -45,7 +45,7 @@
   <div id="detail-association-insertion-point"></div>
 
     <%# 子供の追加要素へ飛ばす %>
-    <div class="materials" id="add-space">
+    <div class="materials" id="categories">
     <%= f.fields_for :materials do |form| %>
       <%= render "material_fields", f: form %>
       <!-- f: formとなっていなかったためformが渡せていなかった-->

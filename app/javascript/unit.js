@@ -9,9 +9,16 @@ function material() {
     
     selectBox.addEventListener("change",function(e){
       const selectBox = document.getElementById("thing-select"); //選択ボックス
+      //data-unit
       const dataUnit = selectBox.options[ selectBox.selectedIndex].getAttribute('data-unit');
       const unit = document.getElementById("unit-auto");
-      // Jquery・・・select = $("#thing-select option:selected").data("unit");
+        // Jquery・・・select = $("#thing-select option:selected").data("unit");
+
+      //data-spoon
+      const dataSpoon = selectBox.options[ selectBox.selectedIndex].getAttribute('data-spoon');
+      const spoon = document.getElementById("spoon-auto");
+      //取得したデータを格納
+      spoon.innerHTML = dataSpoon;
       unit.innerHTML = dataUnit;
     });
     // それ以降
