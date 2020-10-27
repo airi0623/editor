@@ -1,0 +1,25 @@
+<h1>Recipes#index</h1>
+
+<div class='btn'>
+  <%= link_to '新規作成', new_recipe_path, method: :get, class: "new-recipe" %>
+</div>
+
+<ul class='recipe-lists'>
+  <% @recipes.each do |recipe|%>
+    <li class='list'>
+      <%#= link_to item_path(item.id) do %>
+        <div class='recipe-img-content'>
+          <%= image_tag recipe.image, class: "recipe-img" %> 
+        </div>
+        <div class='recipe-info'>
+          <h3 class='recipe-name'>
+            <%= recipe.title %>
+          </h3>
+        </div>  
+        <div class='recipe-time'>
+          <%= recipe.category.name %>
+        </div>
+      <%# end %>
+    </li>
+  <% end %>
+        
