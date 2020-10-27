@@ -1,13 +1,18 @@
+// if文でunitの表示切り替え
+// 親の中に入っている子要素全てに再定義を行う
+
 function material() {
   
   const add = document.getElementById("add-btn");
   const imageElementNum = document.querySelectorAll('#image-box').length
+  const btnEvent = document.getElementById("btn-event")
+  
 
-    add.addEventListener("click",function(e){
+  // この書き方でボタン全体に適用できる
+    $("#btn-event").on('click','.select-box',function(){
       const selectBox = document.getElementById("thing-select");
       const unit = document.getElementById("unit-auto");
-      selectBox.addEventListener("change",function(e){
-      console.log(e)
+      selectBox.addEventListener("change",function(){
         const materialId = selectBox.value
         if (materialId >= 1 && materialId <= 100){
           unit.innerHTML = "個";
@@ -24,9 +29,8 @@ function material() {
         } else {
           unit.innerHTML = "--";
         }
-
+      });
     });
-  });
 };
 
 window.addEventListener("load", material); 

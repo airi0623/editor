@@ -27,23 +27,31 @@
 
   <%= f.label "材料" %>
 
-<%# 子供を追加するボタン %>
-<!---->
-  <div class="links">
-    <%= link_to_add_association "材料を追加", f, :materials,
-    class: 'btn btn-success',
-    data: {
-    data_association_insertion_traversal: 'closest',
-    association_insertion_method: 'append' }
-    %>
-  </div>
+  <div id="btn-event" class="onegai">
+    <div class="links">
+      <%= link_to_add_association "材料を追加", f, :materials,
+      class: 'btn btn-success',
+      id: 'add-btn',
+      data: {
+        #association_insertion_traversal: 'closest',
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'}
+        # data-association-insertion-node： '#追加分の差し込み先'
+        # data-association-insertion-method：'差し込み先に対して上なのか下なのか...'
+        #'before'差し込み先の上 'after'差し込み先の下 'append'追加されたものの下 'prepend'追加されたものの上
+      %>
+    </div>
 
-<%# 子供の追加要素へ飛ばす %>
-  <div class="materials">
-  <%= f.fields_for :materials do |form| %>
-    <%= render "material_fields", f: form %>
-    <!-- f: formとなっていなかったためformが渡せていなかった-->
-  <% end %>
+    <%# ここに挿入さきがないと上にコンテンツが挿入されないため、Id付与できない  %>
+    <div id="detail-association-insertion-point"></div>
+
+    <%# 子供の追加要素へ飛ばす %>
+    <div class="materials" id="categories">
+    <%= f.fields_for :materials do |form| %>
+      <%= render "material_fields", f: form %>
+      <!-- f: formとなっていなかったためformが渡せていなかった-->
+    <% end %>
+    </div>
   </div>
 
 <%# CKエディター %>
@@ -57,9 +65,4 @@
   <div class="actions">
     <%= f.submit "送信" %>
   </div>
-<!--
-  <div class="row new--post__submit">
-      <%= f.submit "送信", class: "waves-effect waves-light btn" %>
-  </div>
---> 
 <% end %>
