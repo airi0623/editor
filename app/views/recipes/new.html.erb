@@ -27,22 +27,23 @@
 
   <%= f.label "材料" %>
 
-  <div id="btn-event">
+  <div id="btn-event" class="onegai">
     <div class="links">
       <%= link_to_add_association "材料を追加", f, :materials,
       class: 'btn btn-success',
       id: 'add-btn',
       data: {
-        data_association_insertion_traversal: 'closest',
+        #association_insertion_traversal: 'closest',
         association_insertion_node: '#detail-association-insertion-point',
         association_insertion_method: 'after'}
         # data-association-insertion-node： '#追加分の差し込み先'
         # data-association-insertion-method：'差し込み先に対して上なのか下なのか...'
-        #'before'差し込み先の上 'after'差し込み先の下 'append'差し込み先の下? 'prepend'差し込み先の上?
+        #'before'差し込み先の上 'after'差し込み先の下 'append'追加されたものの下 'prepend'追加されたものの上
       %>
     </div>
-    
-  <div id="detail-association-insertion-point"></div>
+
+    <%# ここに挿入さきがないと上にコンテンツが挿入されないため、Id付与できない  %>
+    <div id="detail-association-insertion-point"></div>
 
     <%# 子供の追加要素へ飛ばす %>
     <div class="materials" id="categories">

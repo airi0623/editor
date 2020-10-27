@@ -1,42 +1,38 @@
-// 自動で単位取得
-// 直下以下にイベントきく
-function material() {
+// いけた！！
+
+$(function() {
   
-  const add = document.getElementById("add-btn"); //追加ボタン
-  
-  // 最初の一つの選択
-  const selectBox = document.getElementById("thing-select"); 
-    
-    selectBox.addEventListener("change",function(e){
-      const selectBox = document.getElementById("thing-select"); //選択ボックス
-      //data-unit
-      const dataUnit = selectBox.options[ selectBox.selectedIndex].getAttribute('data-unit');
-      const unit = document.getElementById("unit-auto");
-        // Jquery・・・select = $("#thing-select option:selected").data("unit");
+  let index = 1;
+  $('.onegai') 
+    .on('cocoon:after-insert', function(e, insertedItem) {
+      // insertedItemへdata属性付与
+      //*上にあるやつしかid与えられない
+      $(insertedItem).find('.select').attr('data-select', index);
+      $(insertedItem).find('.box-spoon').attr('data-spoon', index);
+      $(insertedItem).find('.box-unit').attr('data-unit', index);
+      index = index+1
 
-      //data-spoon
-      const dataSpoon = selectBox.options[ selectBox.selectedIndex].getAttribute('data-spoon');
-      const spoon = document.getElementById("spoon-auto");
-      //取得したデータを格納
-      spoon.innerHTML = dataSpoon;
-      unit.innerHTML = dataUnit;
-    });
-    // それ以降
-    
-  add.addEventListener("click",function(e){
-    const selectBox = document.getElementById("thing-select"); 
-    const unit = document.getElementById("unit-auto");
+      // 確認用：data-selectでindex取得できる
+      // $("#add-btn").on('click',function() {
+      //   const id = $('.select').attr('data-select'); //dataでも付与できる
+      //   console.log(id)
 
-    selectBox.addEventListener("change",function (){
-      const dataUnit = selectBox.options[ selectBox.selectedIndex].getAttribute('data-unit');
-      unit.innerHTML = dataUnit;
-      $("#thing-select").on('change',function(){
-        //select = $("#thing-select option:selected").data("unit");
-        console.log('cok');
-      });
-    });
-  });
-};
+      // -------------------------------------
+      // 個別にid取得
+      // コンテンツの数を数えで4つ目でイベントを起こす
+      $('.select').on('change',function(e){
 
-window.addEventListener("load", material); 
-// if (window.location.pathname === '/items/new') {
+      // idがそれぞれに付与されているか確認用
+      // const selectBox = $(this).attr('id');
+      // const id = $('.this').attr('id');
+      // console.log(id)
+
+      const dataSelect = $(this).attr('data-select')
+      const dataUnit = $("option:selected", this).data("unit");
+      const dataSpoon = $("option:selected", this).data("spoon");
+      console.log(dataUnit)//unitは取れてる
+      $(`[data-unit="${dataSelect}"]`).text(dataUnit)
+      $(`[data-spoon="${dataSelect}"]`).text(dataSpoon)
+      })
+    })
+})
